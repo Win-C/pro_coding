@@ -1,4 +1,6 @@
-/* Takes a word and returns the most common letter in that word */
+'use strict';
+/* Takes a word and returns the most common letter in that word 
+  If tie, first letter with tie frequency is returned */
 function mostFrequentLetter(word) {
   let letterCounts = {};
   let mostFrequentCount = 0;
@@ -15,7 +17,7 @@ function mostFrequentLetter(word) {
     letterCounts[letter] = (letterCounts[letter] || 0) + 1;
     
     //Tests to see if letter is the highest (king of the hill)
-    //If tie, first letter with tie frequency is returned
+    //handles tie
     if (letterCounts[letter] > mostFrequentCount) {
       mostFrequentCount = letterCounts[letter];
       mostFrequentLetter = letter;

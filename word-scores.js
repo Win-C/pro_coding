@@ -3,28 +3,37 @@
 /* The function should take an array of words and return a new array of scores for each word, according to the Scrabble scoring rules */
 
 function calculateWordScores(words) {
-  let wordScores = [];
-  for (let word of words) {
-    let score = 0;
-    for (let letter of word) {
-      if (letter === undefined) break;
-      if (!(letter.toUpperCase() in letterValues)) {
-        score = null;
-        break;
-      }
-      score += letterValues[letter.toUpperCase()];
-    }
-    wordScores.push(score);
-  }
+  // let wordScores = [];
+  // for (let word of words) {
+    // let score = 0;
+    // for (let letter of word) {
+    //   if (letter === undefined) break;
+    //   if (!(letter.toUpperCase() in LETTER_VALUES)) {
+    //     score = null;
+    //     break;
+    //   }
+    //   score += LETTER_VALUES[letter.toUpperCase()];
+    // }
+  //   wordScores.push(score);
+  // }
+  let wordScores = words.map(convert);
   return wordScores;
 }
 
-// debated using this to replace lines 9 - 12
-// wordScores.push(word.forEach(function(val) {
-//    score += letterValues[val.toUpperCase()];
-// }));
+/* accept an word and returns a scrabble score*/
+function convert(word) {
+  let score = 0;
+  for (let letter of word) {
+    if (letter === undefined) return score;
+    if (!(letter.toUpperCase() in LETTER_VALUES)) {
+      return null;
+    }
+    score += LETTER_VALUES[letter.toUpperCase()];
+  }
+  return score;
+}
 
-let letterValues = {
+const LETTER_VALUES = {
   A: 1,
   B: 3,
   C: 3,
