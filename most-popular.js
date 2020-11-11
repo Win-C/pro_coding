@@ -12,8 +12,7 @@ function mostFrequentLetter(word) {
     // letterCounts[letter] = nc;
     
     //Create object key of letter and value equal to count
-    //ask why dot notation vs. bracket notation
-    letter in letterCounts ? letterCounts[letter]++ : letterCounts[letter] = 1; 
+    letterCounts[letter] = (letterCounts[letter] || 0) + 1;
     
     //Tests to see if letter is the highest (king of the hill)
     //If tie, first letter with tie frequency is returned
